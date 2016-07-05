@@ -1,4 +1,5 @@
 #import "AudioRecorder.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define AUDIO_DATA_TYPE_FORMAT float
 
@@ -33,7 +34,8 @@ void AudioInputCallback(void * inUserData,  // Custom audio metadata
     return self;
 }
 
-- (void)setupAudioFormat:(AudioStreamBasicDescription*)format {
+- (void)setupAudioFormat:(AudioStreamBasicDescription*)format
+{
     format->mSampleRate = 16000.0;
     
     format->mFormatID = kAudioFormatLinearPCM;
@@ -45,19 +47,20 @@ void AudioInputCallback(void * inUserData,  // Custom audio metadata
     format->mBitsPerChannel   = sizeof(Float32) * 8;
 }
 
-- (void)startRecording {
+- (void)startRecording
+{
     [self setupAudioFormat:&recordState.dataFormat];
     
     recordState.currentPacket = 0;
     
-    OSStatus status;
-    status = AudioQueueNewInput(&recordState.dataFormat,
-                                AudioInputCallback,
-                                &recordState,
-                                CFRunLoopGetCurrent(),
-                                kCFRunLoopCommonModes,
-                                0,
-                                &recordState.queue);
+    OSStatus status =
+    AudioQueueNewInput(&recordState.dataFormat,
+                       AudioInputCallback,
+                       &recordState,
+                       CFRunLoopGetCurrent(),
+                       kCFRunLoopCommonModes,
+                       0,
+                       &recordState.queue);
     
     if (status == 0) {
         
@@ -72,7 +75,8 @@ void AudioInputCallback(void * inUserData,  // Custom audio metadata
     }
 }
 
-- (void)stopRecording {
+- (void)stopRecording
+{
     recordState.recording = false;
     
     AudioQueueStop(recordState.queue, true);
@@ -85,7 +89,9 @@ void AudioInputCallback(void * inUserData,  // Custom audio metadata
     AudioFileClose(recordState.audioFile);
 }
 
-- (void)feedSamplesToEngine:(UInt32)audioDataBytesCapacity audioData:(void *)audioData {
+- (void)feedSamplesToEngine:(UInt32)audioDataBytesCapacity
+                  audioData:(void *)audioData
+{
     int sampleCount = audioDataBytesCapacity / sizeof(AUDIO_DATA_TYPE_FORMAT);
     AUDIO_DATA_TYPE_FORMAT *samples = (AUDIO_DATA_TYPE_FORMAT*)audioData;
     

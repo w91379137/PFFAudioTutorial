@@ -15,6 +15,7 @@
 		F8BCDB041D2AC0B10049E346 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8BCDB021D2AC0B10049E346 /* LaunchScreen.storyboard */; };
 		F8BCDB0D1D2AC0D20049E346 /* AudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDB0C1D2AC0D20049E346 /* AudioRecorder.m */; };
 		F8BCDB101D2B51E40049E346 /* KKSimplePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDB0F1D2B51E40049E346 /* KKSimplePlayer.m */; };
+		F8BCDB141D2B75020049E346 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8BCDB131D2B75020049E346 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F8BCDB0C1D2AC0D20049E346 /* AudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorder.m; sourceTree = "<group>"; };
 		F8BCDB0E1D2B51E40049E346 /* KKSimplePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSimplePlayer.h; sourceTree = "<group>"; };
 		F8BCDB0F1D2B51E40049E346 /* KKSimplePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKSimplePlayer.m; sourceTree = "<group>"; };
+		F8BCDB131D2B75020049E346 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8BCDB141D2B75020049E346 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +51,7 @@
 		F8BCDAE81D2AC0B10049E346 = {
 			isa = PBXGroup;
 			children = (
+				F8BCDB131D2B75020049E346 /* AVFoundation.framework */,
 				F8BCDAF31D2AC0B10049E346 /* VoiceRecorder */,
 			);
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 				F8BCDB0A1D2AC0B10049E346 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

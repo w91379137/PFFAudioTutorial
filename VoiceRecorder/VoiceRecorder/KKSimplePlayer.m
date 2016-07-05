@@ -225,9 +225,7 @@ didReceiveResponse:(NSURLResponse *)response
     playerStatus.stopped = YES;
 }
 
-#pragma mark -
-#pragma mark Properties
-
+#pragma mark - Properties
 - (BOOL)isStopped
 {
     return playerStatus.stopped;
@@ -288,7 +286,8 @@ void KKAudioFileStreamPacketsCallback(void * inClientData,
 }
 
 static void KKAudioQueueOutputCallback(void * inUserData,
-                                       AudioQueueRef inAQ,AudioQueueBufferRef inBuffer)
+                                       AudioQueueRef inAQ,
+                                       AudioQueueBufferRef inBuffer)
 {
     AudioQueueFreeBuffer(inAQ, inBuffer);
     KKSimplePlayer *self = (__bridge KKSimplePlayer *)inUserData;
@@ -296,7 +295,8 @@ static void KKAudioQueueOutputCallback(void * inUserData,
 }
 
 static void KKAudioQueueRunningListener(void * inUserData,
-                                        AudioQueueRef inAQ, AudioQueuePropertyID inID)
+                                        AudioQueueRef inAQ,
+                                        AudioQueuePropertyID inID)
 {
     KKSimplePlayer *self = (__bridge KKSimplePlayer *)inUserData;
     UInt32 dataSize;
