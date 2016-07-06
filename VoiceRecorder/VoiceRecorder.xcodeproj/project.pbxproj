@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F836BC451D2CDD1B004E2966 /* AudioEngineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F836BC441D2CDD1B004E2966 /* AudioEngineManager.m */; };
+		F836BC481D2CFF45004E2966 /* AudioMp3Convent.m in Sources */ = {isa = PBXBuildFile; fileRef = F836BC471D2CFF45004E2966 /* AudioMp3Convent.m */; };
 		F896C6D41D2C456B005E3962 /* AudioWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F896C6D21D2C456B005E3962 /* AudioWrapper.m */; };
 		F896C6D51D2C456B005E3962 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F896C6D31D2C456B005E3962 /* lame.framework */; };
 		F8BCDAF61D2AC0B10049E346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDAF51D2AC0B10049E346 /* main.m */; };
@@ -24,6 +25,8 @@
 /* Begin PBXFileReference section */
 		F836BC431D2CDD1B004E2966 /* AudioEngineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngineManager.h; sourceTree = "<group>"; };
 		F836BC441D2CDD1B004E2966 /* AudioEngineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEngineManager.m; sourceTree = "<group>"; };
+		F836BC461D2CFF45004E2966 /* AudioMp3Convent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioMp3Convent.h; sourceTree = "<group>"; };
+		F836BC471D2CFF45004E2966 /* AudioMp3Convent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioMp3Convent.m; sourceTree = "<group>"; };
 		F896C6D11D2C456B005E3962 /* AudioWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioWrapper.h; sourceTree = "<group>"; };
 		F896C6D21D2C456B005E3962 /* AudioWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWrapper.m; sourceTree = "<group>"; };
 		F896C6D31D2C456B005E3962 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 		F896C6D01D2C456B005E3962 /* libmp3lame */ = {
 			isa = PBXGroup;
 			children = (
+				F836BC461D2CFF45004E2966 /* AudioMp3Convent.h */,
+				F836BC471D2CFF45004E2966 /* AudioMp3Convent.m */,
 				F896C6D11D2C456B005E3962 /* AudioWrapper.h */,
 				F896C6D21D2C456B005E3962 /* AudioWrapper.m */,
 				F896C6D31D2C456B005E3962 /* lame.framework */,
@@ -213,6 +218,7 @@
 				F8BCDAFC1D2AC0B10049E346 /* ViewController.m in Sources */,
 				F836BC451D2CDD1B004E2966 /* AudioEngineManager.m in Sources */,
 				F8BCDAF91D2AC0B10049E346 /* AppDelegate.m in Sources */,
+				F836BC481D2CFF45004E2966 /* AudioMp3Convent.m in Sources */,
 				F8BCDB0D1D2AC0D20049E346 /* AudioRecorder.m in Sources */,
 				F8BCDAF61D2AC0B10049E346 /* main.m in Sources */,
 				F896C6D41D2C456B005E3962 /* AudioWrapper.m in Sources */,

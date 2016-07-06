@@ -119,13 +119,13 @@
         case Default:
         {
             [engineManager playRecData];
-            [playButton setTitle:@"Play" forState:UIControlStateNormal];
+            [playButton setTitle:@"Stop" forState:UIControlStateNormal];
         }
             break;
         case isPlaying:
         {
             [engineManager stopRecData];
-            [playButton setTitle:@"Stop" forState:UIControlStateNormal];
+            [playButton setTitle:@"Play" forState:UIControlStateNormal];
         }
             break;
             

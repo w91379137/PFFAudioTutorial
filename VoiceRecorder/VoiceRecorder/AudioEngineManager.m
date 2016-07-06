@@ -7,16 +7,24 @@
 //
 
 #import "AudioEngineManager.h"
+//#import "AudioMp3Convent.h"
+
+@interface AudioEngineManager()
+//{
+//    AudioMp3Convent *conventer;
+//}
+
+@end
 
 @implementation AudioEngineManager
 
 - (NSDictionary *)recSettings
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    dict[AVFormatIDKey] = @(kAudioFormatLinearPCM);
+    dict[AVFormatIDKey] = @(kAudioFormatMPEG4AAC);
     dict[AVEncoderAudioQualityKey] = @(AVAudioQualityHigh);
-    dict[AVNumberOfChannelsKey] = @1;
-    dict[AVSampleRateKey] = @44100.0f;
+    dict[AVNumberOfChannelsKey] = @1; //iphone 只有一個
+    dict[AVSampleRateKey] = @22050.0f;//KHz 音質 廣播
     dict[AVLinearPCMBitDepthKey] = @16;
     
     return dict;
@@ -51,12 +59,20 @@
 {
     NSMutableArray *dirPath =
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) mutableCopy];
-    [dirPath addObject:@"rec.caf"];
+    [dirPath addObject:@"rec.aac"];
     
     NSURL *filePath = [NSURL fileURLWithPathComponents:dirPath];
     //NSLog(@"Path :%@",filePath.path);
     return filePath;
 }
+
+//- (NSURL *)mp3FileURL
+//{
+//    NSString *mp3FileName = @"Mp3File";
+//    mp3FileName = [mp3FileName stringByAppendingString:@".mp3"];
+//    NSString *mp3FilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:mp3FileName];
+//    return [NSURL fileURLWithPath:mp3FilePath];
+//}
 
 - (void)removeRecFile
 {
@@ -81,7 +97,7 @@
     AVAudioInputNode *input = audioEngine.inputNode;
     input.volume = 0;
     [input installTapOnBus:0
-                bufferSize:1024//4096
+                bufferSize:4096
                     format:[input inputFormatForBus:0]
                      block:^(AVAudioPCMBuffer * _Nonnull buffer,
                              AVAudioTime * _Nonnull when) {
@@ -98,6 +114,14 @@
         //[audioEngine prepare];
         [audioEngine startAndReturnError:&error];
         if (error) NSLog(@"%@",error);
+        
+//        conventer = [[AudioMp3Convent alloc] init];
+//        conventer.inputPath = [self recFileURL].path;
+//        conventer.outputPath = [self mp3FileURL].path;
+//        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//            [conventer conventToMp3];
+//        });
     }
 }
 
@@ -106,13 +130,25 @@
     self.status = Default;
     [audioEngine.inputNode removeTapOnBus:0];
     [audioEngine stop];
+    
+    //conventer.isStopRecorde = YES;
 }
 
 - (void)playRecData
 {
-    if (outputFile.length == 0) return;
+    //if (outputFile.length == 0) return;
     
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[self recFileURL]
+    NSURL *url = [self recFileURL];
+    
+    {//列印檔案大小
+        NSDictionary *fileAttributes =
+        [[NSFileManager defaultManager] attributesOfItemAtPath:url.path error:nil];
+        NSNumber *fileSizeNumber = [fileAttributes objectForKey:NSFileSize];
+        long long fileSize = [fileSizeNumber longLongValue];
+        NSLog(@"fileSize : %lld",fileSize);
+    }
+    
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url
                                                               error:nil];
     
     self.audioPlayer.volume = 1.0;
