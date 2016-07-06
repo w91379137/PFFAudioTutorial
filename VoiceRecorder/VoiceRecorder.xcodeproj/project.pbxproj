@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F836BC451D2CDD1B004E2966 /* AudioEngineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F836BC441D2CDD1B004E2966 /* AudioEngineManager.m */; };
+		F896C6D41D2C456B005E3962 /* AudioWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F896C6D21D2C456B005E3962 /* AudioWrapper.m */; };
+		F896C6D51D2C456B005E3962 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F896C6D31D2C456B005E3962 /* lame.framework */; };
 		F8BCDAF61D2AC0B10049E346 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDAF51D2AC0B10049E346 /* main.m */; };
 		F8BCDAF91D2AC0B10049E346 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDAF81D2AC0B10049E346 /* AppDelegate.m */; };
 		F8BCDAFC1D2AC0B10049E346 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDAFB1D2AC0B10049E346 /* ViewController.m */; };
@@ -19,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F836BC431D2CDD1B004E2966 /* AudioEngineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngineManager.h; sourceTree = "<group>"; };
+		F836BC441D2CDD1B004E2966 /* AudioEngineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioEngineManager.m; sourceTree = "<group>"; };
+		F896C6D11D2C456B005E3962 /* AudioWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioWrapper.h; sourceTree = "<group>"; };
+		F896C6D21D2C456B005E3962 /* AudioWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioWrapper.m; sourceTree = "<group>"; };
+		F896C6D31D2C456B005E3962 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
 		F8BCDAF11D2AC0B10049E346 /* VoiceRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BCDAF51D2AC0B10049E346 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F8BCDAF71D2AC0B10049E346 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,12 +50,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8BCDB141D2B75020049E346 /* AVFoundation.framework in Frameworks */,
+				F896C6D51D2C456B005E3962 /* lame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F836BC421D2CDCBC004E2966 /* AudioEngineRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				F836BC431D2CDD1B004E2966 /* AudioEngineManager.h */,
+				F836BC441D2CDD1B004E2966 /* AudioEngineManager.m */,
+			);
+			name = AudioEngineRecorder;
+			sourceTree = "<group>";
+		};
+		F896C6D01D2C456B005E3962 /* libmp3lame */ = {
+			isa = PBXGroup;
+			children = (
+				F896C6D11D2C456B005E3962 /* AudioWrapper.h */,
+				F896C6D21D2C456B005E3962 /* AudioWrapper.m */,
+				F896C6D31D2C456B005E3962 /* lame.framework */,
+			);
+			path = libmp3lame;
+			sourceTree = "<group>";
+		};
 		F8BCDAE81D2AC0B10049E346 = {
 			isa = PBXGroup;
 			children = (
@@ -75,8 +103,10 @@
 				F8BCDAF81D2AC0B10049E346 /* AppDelegate.m */,
 				F8BCDAFA1D2AC0B10049E346 /* ViewController.h */,
 				F8BCDAFB1D2AC0B10049E346 /* ViewController.m */,
-				F8BCDB111D2B6CFE0049E346 /* Player */,
-				F8BCDB121D2B6D0D0049E346 /* Recorder */,
+				F896C6D01D2C456B005E3962 /* libmp3lame */,
+				F8BCDB111D2B6CFE0049E346 /* AudioQueuePlayer */,
+				F8BCDB121D2B6D0D0049E346 /* AudioQueueRecorder */,
+				F836BC421D2CDCBC004E2966 /* AudioEngineRecorder */,
 				F8BCDAF21D2AC0B10049E346 /* Products */,
 				F8BCDAF41D2AC0B10049E346 /* Supporting Files */,
 			);
@@ -92,22 +122,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F8BCDB111D2B6CFE0049E346 /* Player */ = {
+		F8BCDB111D2B6CFE0049E346 /* AudioQueuePlayer */ = {
 			isa = PBXGroup;
 			children = (
 				F8BCDB0E1D2B51E40049E346 /* KKSimplePlayer.h */,
 				F8BCDB0F1D2B51E40049E346 /* KKSimplePlayer.m */,
 			);
-			name = Player;
+			name = AudioQueuePlayer;
 			sourceTree = "<group>";
 		};
-		F8BCDB121D2B6D0D0049E346 /* Recorder */ = {
+		F8BCDB121D2B6D0D0049E346 /* AudioQueueRecorder */ = {
 			isa = PBXGroup;
 			children = (
 				F8BCDB0B1D2AC0D20049E346 /* AudioRecorder.h */,
 				F8BCDB0C1D2AC0D20049E346 /* AudioRecorder.m */,
 			);
-			name = Recorder;
+			name = AudioQueueRecorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,9 +211,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8BCDAFC1D2AC0B10049E346 /* ViewController.m in Sources */,
+				F836BC451D2CDD1B004E2966 /* AudioEngineManager.m in Sources */,
 				F8BCDAF91D2AC0B10049E346 /* AppDelegate.m in Sources */,
 				F8BCDB0D1D2AC0D20049E346 /* AudioRecorder.m in Sources */,
 				F8BCDAF61D2AC0B10049E346 /* main.m in Sources */,
+				F896C6D41D2C456B005E3962 /* AudioWrapper.m in Sources */,
 				F8BCDB101D2B51E40049E346 /* KKSimplePlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +328,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VoiceRecorder/libmp3lame",
+				);
 				INFOPLIST_FILE = VoiceRecorder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.a.VoiceRecorder;
@@ -307,6 +343,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VoiceRecorder/libmp3lame",
+				);
 				INFOPLIST_FILE = VoiceRecorder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.a.VoiceRecorder;
